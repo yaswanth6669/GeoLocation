@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Geo Location</title>
+	</head>
+	<style>
+		body{
+			background: #bfbfbf;
+		}
+
+		#container{
+			background: #000000;
+			color: #ffffff;
+		}
+
+		h1{
+			text-align: center;
+			color: red;
+		}
+
+		#button{
+			text-align: center;
+		}
+	</style>
+	<body>
+		<div id="container">
+			<h1>GeoLocation Services</h1>
+			<div id="button"><button onclick="getLocation()">Get Coords</button></div>
+			<h1 id="coords"></h1>
+
+			<script>
+				var x = document.getElementById("coords");
+				function getLocation(){
+					if(navigator.geolocation){
+						navigator.geolocation.getCurrentPosition(showPosition);
+					} else{
+						x.innerHTML = "Geo Location not supported";
+					}
+				}
+
+				function showPosition(position){
+					//console.log(position.coords.latitude);
+					x.innerHTML = "Latitude: "+position.coords.latitude+"<br>Longitude: "+position.coords.longitude;
+				}
+			</script>
+		</div>
+	</body>
+</html>
